@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="publish_pose_image" default="true"/>
+
+  <!-- launch realsense -->
+  <include file="$(find realsense2_camera)/launch/rs_camera.launch">
+    <arg name="align_depth" value="true"/>
+  </include>
+
+  <node name="pose_estimation" pkg="mediapipe_ros" type="pose_estimation.py" output="screen">
+    <param name="publish_pose_image" value="$(arg publish_pose_image)"/>
+    <remap from="~rgb" to="/camera/color/image_raw"/>
+    <remap from="~rgb_camera_info" to="/camera/color/camera_info"/>
+    <remap from="~depth" to="/camera/aligned_depth_to_color/image_raw"/>
+  </node>
+
+  <node name="estimated_pose" pkg="rqt_image_view" type="rqt_image_view" output="screen">
+    <param name="image" value="/pose_estimation/pose_image"/>
+  </node>
+
+  <param name="/ROS_IP" value="127.0.0.1"/>
+  <param name="/ROS_TCP_PORT" value="10000"/>
+  <node name="server_endpoint" pkg="mediapipe_ros" type="server_endpoint.py" args="--wait" output="screen" respawn="true" />
+</launch>
