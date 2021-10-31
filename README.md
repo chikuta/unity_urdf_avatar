@@ -2,21 +2,23 @@
 
 ## 概要
 
-Unity LT 祭りで使用したソースコードです。
+[Unity道場 ロボティクス 秋のLT祭り 2021](https://youtu.be/LlQX-BVLeRg?t=9091) のライブデモで使用したソースコードです。
+
+![top image](images~/unity_top.png)
 
 ## 実行環境
 
 * Ubuntu 20.04
 * ROS1 noetic
 * python 3
-* Unity 2020.3.x
+* Unity 2020.3.6f1
 
 ## 実行方法
 
 1. UnityProjectをダウンロード
 
 ```bash
-git clone https://github.com/chikuta/valkyrie_avatar_unity.git
+git clone https://github.com/chikuta/unity_urdf_avatar.git
 ```
 
 2. ダウンロードしたProjectをUnityで読み込む
@@ -25,7 +27,7 @@ git clone https://github.com/chikuta/valkyrie_avatar_unity.git
 
 4. UnityEditor画面より、[Window]→[Package Manager]→[My Asset] から Bio IK をインポート
 
-5. [mediapipe_ros]() の README を参考にして ros node を実行
+5. [mediapipe_ros](./ROS/mediapipe_ros) の README を参考にして ros node を実行
 
 6. UnityEditorからゲームを実行
 

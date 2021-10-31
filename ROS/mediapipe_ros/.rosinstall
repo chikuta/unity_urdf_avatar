@@ -1,0 +1,4 @@
+- git:
+    local-name: ros_tcp_endpoint
+    uri: https://github.com/Unity-Technologies/ROS-TCP-Endpoint.git
+    version: v0.5.0
